@@ -11,10 +11,11 @@ namespace Calculator
         {
             try
             {
-                var splitNumbers = stuffToCalculate.Split("+")
-                    .Select(int.Parse).ToArray(); // Turns string into integer and puts it into array
+                var splitNumbers = stuffToCalculate
+                                    .Split("+") // Splits it at the + 
+                                    .Select(int.Parse); // Turns string into integer and puts it into array
 
-                return splitNumbers[0] + splitNumbers[1]; // adds first number and second number
+                return splitNumbers.Sum();
             }
             catch(FormatException)
             {
