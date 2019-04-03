@@ -9,10 +9,17 @@ namespace Calculator
     {
         public int DoMath(string stuffToCalculate)
         {
-            var splitNumbers = stuffToCalculate.Split("+")
-                .Select(int.Parse).ToArray(); // Turns string into integer and puts it into array
+            try
+            {
+                var splitNumbers = stuffToCalculate.Split("+")
+                    .Select(int.Parse).ToArray(); // Turns string into integer and puts it into array
 
-            return splitNumbers[0] + splitNumbers[1]; // adds first number and second number
+                return splitNumbers[0] + splitNumbers[1]; // adds first number and second number
+            }
+            catch(FormatException)
+            {
+                throw new InvalidInputException();
+            }
         }
     }
 }
